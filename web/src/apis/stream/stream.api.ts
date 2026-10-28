@@ -1,8 +1,9 @@
-import { getMockStream } from './stream.mock'
+import { api } from '@/integrations/axios/api'
 import type { TGetStreamParams, TGetStreamResponse } from './stream.type'
 
 export const getStream = async (
   params: TGetStreamParams,
 ): Promise<TGetStreamResponse> => {
-  return getMockStream(params)
+  const { data } = await api.get<TGetStreamResponse>('/stream', { params })
+  return data
 }

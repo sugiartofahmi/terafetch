@@ -1,5 +1,6 @@
 export const SUPPORTED_HOSTS = [
   'terabox.com',
+  '1024terabox.com',
   '1024tera.com',
   'teraboxapp.com',
   'terabox.app',

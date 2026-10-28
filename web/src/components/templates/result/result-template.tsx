@@ -45,7 +45,17 @@ export const ResultTemplate = ({ search }: TResultTemplateProps) => {
     per_page: 10,
   })
 
+  const clearMediaFilter = () => {
+    if (filter === 'all') return
+    void navigate({
+      to: '/result',
+      search: { url, filter: 'all' },
+      replace: true,
+    })
+  }
+
   const handleSelectFolder = (folderItem: TFolderItem) => {
+    clearMediaFilter()
     setCurrentFolder(folderItem.id)
     setBreadcrumbTrail((prev) => [
       ...prev,
@@ -54,12 +64,14 @@ export const ResultTemplate = ({ search }: TResultTemplateProps) => {
   }
 
   const handleNavigateRoot = () => {
+    clearMediaFilter()
     setCurrentFolder(undefined)
     setBreadcrumbTrail([])
   }
 
   const handleNavigateFolder = (targetIndex: number) => {
     if (targetIndex >= 0 && targetIndex < breadcrumbTrail.length) {
+      clearMediaFilter()
       const target = breadcrumbTrail[targetIndex]
       setCurrentFolder(target.id)
       setBreadcrumbTrail((prev) => prev.slice(0, targetIndex + 1))

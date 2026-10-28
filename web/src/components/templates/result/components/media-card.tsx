@@ -15,6 +15,8 @@ export type TMediaCardProps = {
 
 export const MediaCard = ({ item, url }: TMediaCardProps) => {
   const isVideo = item.type === 'video'
+  const streamId =
+    ('stream_id' in item && item.stream_id) || item.id
 
   return (
     <Card className="flex flex-col">
@@ -70,6 +72,14 @@ export const MediaCard = ({ item, url }: TMediaCardProps) => {
           <DownloadButton
             filename={item.name}
             downloadUrl={item.download_url}
+            resolve={
+              item.type === 'photo' || item.download_url
+                ? undefined
+                : {
+                    id: streamId,
+                    url,
+                  }
+            }
             fullWidth
           />
 
@@ -82,9 +92,11 @@ export const MediaCard = ({ item, url }: TMediaCardProps) => {
               <Link
                 to="/stream"
                 search={{
-                  id: ('stream_id' in item && item.stream_id) || item.id,
+                  id: streamId,
                   url,
                 }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Play className="size-4" />
                 <span>Stream</span>

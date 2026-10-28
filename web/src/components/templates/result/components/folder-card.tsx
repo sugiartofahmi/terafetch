@@ -21,9 +21,6 @@ export const FolderCard = ({ item, onSelect }: TFolderCardProps) => {
         <span className="block truncate text-title font-semibold text-foreground">
           {item.name}
         </span>
-        <span className="text-body-sm text-muted-foreground">
-          {item.item_count} {item.item_count === 1 ? 'item' : 'items'}
-        </span>
       </span>
 
       <ChevronRight className="size-5 text-muted-foreground transition-colors group-hover:text-primary shrink-0" />
