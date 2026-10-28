@@ -2,6 +2,8 @@
 
 Resolve TeraBox share links: list folder/file, stream video, and download — with a React frontend and a Rust API.
 
+Built as a learning project to explore TeraBox APIs, a Rust HTTP backend, and frontend integration.
+
 ## Features
 
 - Paste a TeraBox share URL and browse folders, videos, and photos
@@ -137,6 +139,3 @@ Error envelope:
 | TeraBox list + stream metadata | Ready |
 | HLS → MP4 remux + Range serve | Ready (ffmpeg, VLC fallback) |
 
-## License
-
-Private / unlicensed unless stated otherwise.
